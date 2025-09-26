@@ -12,7 +12,8 @@
     "build-native-android": "npm run prebuild:android && cd android && ./gradlew assembleDebug",
     "gradle-check": "bash ./.ci-gradle-check.sh",
     "gradle": "bash ../gradle-check.sh",
-    "build": "npm run gradle-check"
+    "build": "npm run gradle-check",
+    "ci-start": "bash ./.ci-start.sh"
   },
   "dependencies": {
     "@expo/metro-runtime": "~5.0.4",
