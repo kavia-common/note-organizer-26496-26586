@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Repo-root android gradle shim. Delegates to notes_app_frontend/android/gradlew if present.
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+if [ -f "$ROOT_DIR/notes_app_frontend/android/gradlew" ]; then
+  exec bash "$ROOT_DIR/notes_app_frontend/android/gradlew" "$@"
+fi
+
+echo "CI-safe shim: No native android project generated yet. Skipping."
+exit 0

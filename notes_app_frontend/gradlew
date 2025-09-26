@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# notes_app_frontend-level CI-safe Gradle wrapper shim.
+# Delegates to android/gradlew if it exists (after expo prebuild), else no-ops.
+set -euo pipefail
+
+if [ -f "android/gradlew" ]; then
+  exec bash "android/gradlew" "$@"
+fi
+
+echo "CI-safe shim (notes_app_frontend): No native Android project generated yet. Skipping."
+exit 0

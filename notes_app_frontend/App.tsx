@@ -1,21 +1,16 @@
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { AppNavigator } from './src/navigation/AppNavigator';
+import { NotesProvider } from './src/context/NotesContext';
 
+// PUBLIC_INTERFACE
 export default function App() {
+  /** Root application entrypoint.
+   * Wraps the app with NotesProvider and sets up navigation.
+   * Returns the app navigator with drawer and stack.
+   */
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NotesProvider>
+      <AppNavigator />
+    </NotesProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

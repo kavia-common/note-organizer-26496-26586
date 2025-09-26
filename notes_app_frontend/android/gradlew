@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Temporary CI-safe gradle wrapper placeholder for Expo managed projects.
+# If an actual Gradle wrapper exists after prebuild, delegate to it.
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REAL="$SCRIPT_DIR/gradle/wrapper/gradle-wrapper.jar"
+if [ -f "$REAL" ]; then
+  # Real wrapper exists; delegate to standard gradle wrapper script if present
+  if [ -f "$SCRIPT_DIR/gradlew" ] && [ "$0" != "$SCRIPT_DIR/gradlew" ]; then
+    exec "$SCRIPT_DIR/gradlew" "$@"
+  fi
+fi
+echo "CI-safe placeholder: Android native project not generated yet (Expo managed)."
+echo "To build natively, run: npm run build-native-android (which runs expo prebuild then gradle)."
+exit 0

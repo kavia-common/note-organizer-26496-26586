@@ -1,0 +1,7 @@
+{
+  "name": "note-organizer-workspace",
+  "private": true,
+  "scripts": {
+    "gradle-check": "bash ./gradle-check.sh"
+  }
+}
